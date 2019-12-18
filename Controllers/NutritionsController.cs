@@ -30,7 +30,7 @@ namespace BabyApp.Controllers
 
         // GET: api/Nutritions/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Nutritions>> GetNutritions(int id)
+        public async Task<ActionResult<Nutritions>> GetNutritions(long id)
         {
             var nutritions = await _context.Nutritions.FindAsync(id);
 
@@ -46,7 +46,7 @@ namespace BabyApp.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutNutritions(int id, Nutritions nutritions)
+        public async Task<IActionResult> PutNutritions(long id, Nutritions nutritions)
         {
             if (id != nutritions.Id)
             {
@@ -88,7 +88,7 @@ namespace BabyApp.Controllers
 
         // DELETE: api/Nutritions/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Nutritions>> DeleteNutritions(int id)
+        public async Task<ActionResult<Nutritions>> DeleteNutritions(long id)
         {
             var nutritions = await _context.Nutritions.FindAsync(id);
             if (nutritions == null)
@@ -102,7 +102,7 @@ namespace BabyApp.Controllers
             return nutritions;
         }
 
-        private bool NutritionsExists(int id)
+        private bool NutritionsExists(long id)
         {
             return _context.Nutritions.Any(e => e.Id == id);
         }

@@ -11,5 +11,7 @@ namespace BabyApp.Data
         }
 
         public DbSet<BabyApp.Models.Nutritions> Nutritions { get; set; }
+
+        public DbSet<BabyApp.Models.Childeren> Childeren { get; set; }
     }
 }

@@ -12,11 +12,11 @@ namespace BabyApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class NutritionController : ControllerBase
+    public class NutritionsController : ControllerBase
     {
         private readonly BabyAppContext _context;
 
-        public NutritionController(BabyAppContext context)
+        public NutritionsController(BabyAppContext context)
         {
             _context = context;
         }

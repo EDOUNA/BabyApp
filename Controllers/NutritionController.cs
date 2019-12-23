@@ -23,16 +23,17 @@ namespace BabyApp.Controllers
 
         // GET: api/Nutritions
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Nutritions>>> GetNutritions()
+        public ActionResult<IEnumerable<Nutritions>> GetNutritions()
         {
-            return await _context.Nutritions.ToListAsync();
+            return _context.Nutritions.Include(child => child.Child).ToList();
         }
 
         // GET: api/Nutritions/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Nutritions>> GetNutritions(long id)
+        public ActionResult<Nutritions> GetNutritions(long id)
         {
-            var nutritions = await _context.Nutritions.FindAsync(id);
+            //r nutritions = await _context.Nutritions.FindAsync(id);
+            var nutritions = _context.Nutritions.Include(child => child.Child).SingleOrDefault(i => i.Id == id);
 
             if (nutritions == null)
             {
@@ -40,6 +41,20 @@ namespace BabyApp.Controllers
             }
 
             return nutritions;
+        }
+
+        // GET: api/Nutritions/byChildId/5
+        [HttpGet("byChildId/{childId}")]
+        public ActionResult<Nutritions> GetNutritionsByChildId(long childId)
+        {
+            var nutritionsByChildId = _context.Nutritions.Include(child => child.Child).SingleOrDefault(i => i.Child.Id == childId);
+
+            if(nutritionsByChildId == null)
+            {
+                return NotFound();
+            }
+
+            return nutritionsByChildId;
         }
 
         // PUT: api/Nutritions/5

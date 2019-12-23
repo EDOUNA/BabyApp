@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using BabyApp.Models;
 
 namespace BabyApp.Models
 {
@@ -16,6 +17,6 @@ namespace BabyApp.Models
         [Required(ErrorMessage = "A nutrition value is required.")]
         public int NutritionValue { get; set; }
 
-        public virtual Childeren Childeren { get; set; }
+        public virtual Childeren Child { get; set; }
     }
 }

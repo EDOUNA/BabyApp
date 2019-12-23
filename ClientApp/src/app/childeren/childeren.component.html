@@ -1,0 +1,20 @@
+<h1 id="tableLabel">Childeren</h1>
+
+<p *ngIf="!childeren"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="childeren">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Created timestamp</th>
+      <th>Active state</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let child of childeren">
+      <td>{{ child.name }}</td>
+      <td>{{ child.createdTimestamp }}</td>
+      <td>{{ child.active }}</td>
+    </tr>
+  </tbody>
+</table>

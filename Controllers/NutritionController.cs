@@ -45,10 +45,10 @@ namespace BabyApp.Controllers
 
         // GET: api/Nutritions/byChildId/5
         [HttpGet("byChildId/{childId}")]
-        public ActionResult<Nutritions> GetNutritionsByChildId(long childId)
+        public ActionResult<List<Nutritions>> GetNutritionsByChildId(long childId)
         {
-            var nutritionsByChildId = _context.Nutritions.Include(child => child.Child).SingleOrDefault(i => i.Child.Id == childId);
-
+            //var nutritionsByChildId = _context.Nutritions.Include(child => child.Child).SingleOrDefault((i => i.Child.Id == childId);
+            var nutritionsByChildId = _context.Nutritions.Include(child => child.Child).Where(i => i.Child.Id == childId).ToList();
             if(nutritionsByChildId == null)
             {
                 return NotFound();

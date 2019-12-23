@@ -1,1 +1,16 @@
-<p>nutritions works!</p>
+<h3>Nutritions
+  <div class="pull-right">
+    <a [routerLink]="['/nutritions/create']" class="btn btn-primary">CREATE</a>
+  </div>
+</h3>
+
+<p *ngIf="!nutritions"><em>Loading nutritions...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="nutritions">
+  <tbody>
+    <tr *ngFor="let n of nutritions">
+      <td>{{ n.nutritionValue }}</td>
+      <td>{{ n.createdTimestamp | date:'HH:mm' }}</td>
+    </tr>
+  </tbody>
+</table>

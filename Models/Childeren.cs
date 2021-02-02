@@ -1,22 +1,21 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using BabyApp.Models;
 
 namespace BabyApp.Models
 {
-    [Table("Nutritions")]
-    public class Nutritions
+    [Table("Childeren")]
+    public class Childeren
     {
         public long Id { get; set; }
+
+        [Required(ErrorMessage = "A name is required")]
+        public String Name { get; set; }
 
         public DateTime CreatedTimestamp { get; set; }
 
         public Nullable<DateTime> UpdatedTimestamp { get; set; }
 
-        [Required(ErrorMessage = "A nutrition value is required.")]
-        public int NutritionValue { get; set; }
-
-        public virtual Childeren Child { get; set; }
+        public int Active { get; set; }
     }
 }

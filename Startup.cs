@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using BabyApp.Data;
 
 namespace BabyApp
 {
@@ -26,6 +28,9 @@ namespace BabyApp
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddDbContext<BabyAppContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("BabyAppContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

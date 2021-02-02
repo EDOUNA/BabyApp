@@ -1,0 +1,11 @@
+<section class="sample-app-content">
+  <h1>Create record</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <p>
+      <input type="number" formControlName="nutritionValue" placeholder="Nutrition value">
+    </p> 
+    <p>
+      <button type="submit" [disabled]="!form.valid">Submit</button>
+    </p>
+  </form>
+</section>
